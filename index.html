@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartEdge Marketing — Brand Style Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Georgia:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #1A1A1B;
+    --cream: #F9F8F3;
+    --blue: #0056B3;
+    --lime: #CCFF00;
+    --purple: #B19CD9;
+    --black-rgb: 26,26,27;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--lime); color: var(--black); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--lime); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26,26,27,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(204,255,0,0.15);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--lime); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(249,248,243,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--lime); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--lime);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(204,255,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(204,255,0,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.4s;
+  }
+
+  .hero-title .slash { color: var(--lime); }
+  .hero-title .sub { display: block; color: rgba(249,248,243,0.25); font-size: 0.45em; font-weight: 300; letter-spacing: 0.05em; margin-top: 0.5rem; }
+
+  .hero-desc {
+    max-width: 480px;
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(249,248,243,0.6);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.8s;
+  }
+
+  .hero-meta-item { }
+  .hero-meta-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.25rem;
+  }
+  .hero-meta-value {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  .hero-version {
+    position: absolute;
+    bottom: 3rem;
+    right: 4rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(249,248,243,0.2);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 1s;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 4rem;
+    border-top: 1px solid rgba(249,248,243,0.06);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-num {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--lime);
+    opacity: 0.6;
+  }
+
+  .section-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(249,248,243,0.4);
+  }
+
+  .section-headline {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+  }
+
+  .section-sub {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: rgba(249,248,243,0.5);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 3rem;
+  }
+
+  /* COLORS */
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .color-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(249,248,243,0.08);
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: default;
+  }
+
+  .color-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(249,248,243,0.2);
+  }
+
+  .color-swatch {
+    height: 120px;
+    position: relative;
+  }
+
+  .color-swatch-label {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  .color-info {
+    background: rgba(249,248,243,0.04);
+    padding: 1rem 1.25rem;
+  }
+
+  .color-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .color-hex {
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    color: rgba(249,248,243,0.4);
+    margin-bottom: 0.5rem;
+  }
+
+  .color-cmyk {
+    font-size: 0.65rem;
+    font-family: 'Courier New', monospace;
+    color: rgba(249,248,243,0.25);
+    margin-bottom: 0.75rem;
+  }
+
+  .color-usage {
+    font-size: 0.7rem;
+    color: rgba(249,248,243,0.5);
+    line-height: 1.5;
+  }
+
+  .color-copy-btn {
+    margin-top: 0.75rem;
+    background: transparent;
+    border: 1px solid rgba(249,248,243,0.1);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(249,248,243,0.4);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .color-copy-btn:hover {
+    border-color: var(--lime);
+    color: var(--lime);
+  }
+
+  .color-copy-btn.copied {
+    border-color: var(--lime);
+    color: var(--lime);
+    background: rgba(204,255,0,0.08);
+  }
+
+  /* TYPOGRAPHY */
+  .type-grid { display: flex; flex-direction: column; gap: 3rem; }
+
+  .type-block {
+    border-left: 2px solid rgba(249,248,243,0.08);
+    padding-left: 2rem;
+    transition: border-color 0.2s;
+  }
+
+  .type-block:hover { border-color: var(--lime); }
+
+  .type-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .type-specimen-h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--cream);
+  }
+
+  .type-specimen-h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: -0.02em;
+    color: var(--blue);
+  }
+
+  .type-specimen-h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    letter-spacing: -0.01em;
+    color: var(--blue);
+  }
+
+  .type-specimen-body {
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--cream);
+    max-width: 600px;
+  }
+
+  .type-specimen-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(249,248,243,0.5);
+  }
+
+  .type-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .type-meta-item {
+    font-size: 0.65rem;
+    color: rgba(249,248,243,0.25);
+    font-family: 'Courier New', monospace;
+  }
+
+  /* LOGO */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .logo-card {
+    border-radius: 8px;
+    border: 1px solid rgba(249,248,243,0.08);
+    overflow: hidden;
+  }
+
+  .logo-display {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+  }
+
+  .logo-display .slash { color: var(--lime); }
+
+  .logo-display-dark { background: var(--black); color: var(--cream); }
+  .logo-display-cream { background: var(--cream); color: var(--black); }
+  .logo-display-blue { background: var(--blue); color: var(--cream); }
+
+  .logo-card-meta {
+    padding: 1rem 1.25rem;
+    background: rgba(249,248,243,0.03);
+    border-top: 1px solid rgba(249,248,243,0.06);
+  }
+
+  .logo-card-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .logo-card-desc {
+    font-size: 0.65rem;
+    color: rgba(249,248,243,0.4);
+  }
+
+  /* USAGE RULES */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .rule-card {
+    background: rgba(249,248,243,0.03);
+    border: 1px solid rgba(249,248,243,0.06);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .rule-card:hover { border-color: rgba(249,248,243,0.15); }
+
+  .rule-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .rule-icon-do { background: rgba(204,255,0,0.1); color: var(--lime); }
+  .rule-icon-dont { background: rgba(255,60,60,0.1); color: #ff4444; }
+
+  .rule-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .rule-desc {
+    font-size: 0.75rem;
+    color: rgba(249,248,243,0.5);
+    line-height: 1.6;
+  }
+
+  /* BUSINESS CARD PREVIEW */
+  .card-showcase {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background: rgba(249,248,243,0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(249,248,243,0.06);
+  }
+
+  .bc-preview {
+    width: 340px;
+    height: 193px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+  }
+
+  .bc-preview:hover { transform: scale(1.03) rotate(-1deg); }
+
+  .bc-front-preview {
+    background: var(--black);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 2.5rem;
+    position: relative;
+  }
+
+  .bc-front-preview::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--lime);
+  }
+
+  .bc-wordmark {
+    font-weight: 900;
+    font-size: 2.2rem;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .bc-wordmark .slash { color: var(--lime); }
+
+  .bc-tagline {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(249,248,243,0.35);
+  }
+
+  .bc-back-preview {
+    background: var(--cream);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+    position: relative;
+  }
+
+  .bc-back-preview::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--lime);
+  }
+
+  .bc-name {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--black);
+    margin-bottom: 0.1rem;
+  }
+
+  .bc-title {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.75rem;
+  }
+
+  .bc-contact {
+    font-family: Georgia, serif;
+    font-size: 0.65rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .bc-services {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.5rem;
+    text-align: right;
+  }
+
+  .bc-services span {
+    display: block;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--purple);
+    line-height: 1.8;
+  }
+
+  /* SPACING */
+  .spacing-grid {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .spacing-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .spacing-bar {
+    background: var(--lime);
+    width: 40px;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  .spacing-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(249,248,243,0.4);
+    text-align: center;
+  }
+
+  .spacing-value {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    color: var(--lime);
+  }
+
+  /* VOICE */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .voice-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .card-showcase { padding: 1.5rem; }
+    .bc-preview { width: 100%; max-width: 340px; }
+  }
+
+  .voice-col-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .voice-col-title.do { color: var(--lime); }
+  .voice-col-title.dont { color: #ff4444; }
+
+  .voice-item {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+
+  .voice-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.4rem;
+  }
+
+  .voice-dot.do { background: var(--lime); }
+  .voice-dot.dont { background: #ff4444; }
+
+  .voice-text {
+    font-size: 0.8rem;
+    color: rgba(249,248,243,0.6);
+    line-height: 1.6;
+    font-family: Georgia, serif;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(249,248,243,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+  }
+
+  .footer-logo span { color: var(--lime); }
+
+  .footer-meta {
+    font-size: 0.65rem;
+    color: rgba(249,248,243,0.25);
+    letter-spacing: 0.08em;
+    text-align: right;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* PILL TAGS */
+  .pill {
+    display: inline-block;
+    background: rgba(204,255,0,0.1);
+    color: var(--lime);
+    border: 1px solid rgba(204,255,0,0.2);
+    border-radius: 100px;
+    padding: 3px 12px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pill-purple {
+    background: rgba(177,156,217,0.1);
+    color: var(--purple);
+    border-color: rgba(177,156,217,0.2);
+  }
+
+  .pill-blue {
+    background: rgba(0,86,179,0.15);
+    color: #4d9fff;
+    border-color: rgba(0,86,179,0.3);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">SMART<span>/</span>EDGE</a>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#card">Business Card</a></li>
+    <li><a href="#voice">Voice</a></li>
+    <li><a href="#usage">Usage</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">SmartEdge Marketing · Brand Identity System</div>
+  <h1 class="hero-title">
+    Brand<span class="slash">/</span>Guide
+    <span class="sub">Where Great Design Clicks · Version 1.0 · 2025</span>
+  </h1>
+  <p class="hero-desc">
+    This document defines the visual language of SmartEdge Marketing. Every color, typeface, and design decision exists to communicate one thing: premium work that demands attention.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Founded</div>
+      <div class="hero-meta-value">2021, Charleston SC</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Positioning</div>
+      <div class="hero-meta-value">Premium Generalist</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Tagline</div>
+      <div class="hero-meta-value">Where Great Design Clicks</div>
+    </div>
+  </div>
+  <div class="hero-version">v1.0 — 2025</div>
+</section>
+
+<!-- COLORS -->
+<section id="colors">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <span class="section-title">Color Palette</span>
+  </div>
+  <h2 class="section-headline reveal">Five colors.<br>Infinite combinations.</h2>
+  <p class="section-sub reveal">Every color has a job. Use them with intention — never interchangeably.</p>
+
+  <div class="colors-grid">
+    <div class="color-card reveal">
+      <div class="color-swatch" style="background:#1A1A1B;">
+        <span class="color-swatch-label" style="color:rgba(249,248,243,0.4);">Primary</span>
+      </div>
+      <div class="color-info">
+        <div class="color-name">Almost Black</div>
+        <div class="color-hex">#1A1A1B</div>
+        <div class="color-cmyk">C:0 M:0 Y:0 K:93</div>
+        <div class="color-usage">Hero backgrounds · Footers · Main heading text · Dark surfaces</div>
+        <button class="color-copy-btn" onclick="copyColor(this, '#1A1A1B')">Copy Hex</button>
+      </div>
+    </div>
+
+    <div class="color-card reveal">
+      <div class="color-swatch" style="background:#F9F8F3; border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <span class="color-swatch-label" style="color:rgba(26,26,27,0.4);">Background</span>
+      </div>
+      <div class="color-info">
+        <div class="color-name">Creamy White</div>
+        <div class="color-hex">#F9F8F3</div>
+        <div class="color-cmyk">C:2 M:1 Y:4 K:0</div>
+        <div class="color-usage">Page backgrounds · Body text sections · Light surfaces</div>
+        <button class="color-copy-btn" onclick="copyColor(this, '#F9F8F3')">Copy Hex</button>
+      </div>
+    </div>
+
+    <div class="color-card reveal">
+      <div class="color-swatch" style="background:#0056B3;">
+        <span class="color-swatch-label" style="color:rgba(249,248,243,0.4);">Trust</span>
+      </div>
+      <div class="color-info">
+        <div class="color-name">Royal Azure Blue</div>
+        <div class="color-hex">#0056B3</div>
+        <div class="color-cmyk">C:100 M:52 Y:0 K:30</div>
+        <div class="color-usage">H2 & H3 headings · Links · Trust elements · Titles</div>
+        <button class="color-copy-btn" onclick="copyColor(this, '#0056B3')">Copy Hex</button>
+      </div>
+    </div>
+
+    <div class="color-card reveal">
+      <div class="color-swatch" style="background:#CCFF00;">
+        <span class="color-swatch-label" style="color:rgba(26,26,27,0.5);">Accent</span>
+      </div>
+      <div class="color-info">
+        <div class="color-name">Cyber Lime</div>
+        <div class="color-hex">#CCFF00</div>
+        <div class="color-cmyk">C:20 M:0 Y:100 K:0</div>
+        <div class="color-usage">CTA buttons · Logo slash · High-impact accents only · Use sparingly</div>
+        <button class="color-copy-btn" onclick="copyColor(this, '#CCFF00')">Copy Hex</button>
+      </div>
+    </div>
+
+    <div class="color-card reveal">
+      <div class="color-swatch" style="background:#B19CD9;">
+        <span class="color-swatch-label" style="color:rgba(26,26,27,0.4);">Secondary</span>
+      </div>
+      <div class="color-info">
+        <div class="color-name">Light Purple</div>
+        <div class="color-hex">#B19CD9</div>
+        <div class="color-cmyk">C:28 M:35 Y:0 K:15</div>
+        <div class="color-usage">Icons · Decorative dividers · Secondary branding · Services text</div>
+        <button class="color-copy-btn" onclick="copyColor(this, '#B19CD9')">Copy Hex</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section id="typography">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <span class="section-title">Typography</span>
+  </div>
+  <h2 class="section-headline reveal">Two fonts.<br>Every situation covered.</h2>
+  <p class="section-sub reveal">Montserrat commands. Georgia persuades. Never substitute either.</p>
+
+  <div class="type-grid">
+    <div class="type-block reveal">
+      <div class="type-label">Display / Headlines — Montserrat Black</div>
+      <div class="type-specimen-h1">SMART<span style="color:var(--lime)">/</span>EDGE</div>
+      <div class="type-meta">
+        <span class="type-meta-item">Font: Montserrat</span>
+        <span class="type-meta-item">Weight: 900 Black</span>
+        <span class="type-meta-item">Tracking: -0.04em</span>
+        <span class="type-meta-item">Use: Hero text, wordmark, major statements</span>
+      </div>
+    </div>
+
+    <div class="type-block reveal">
+      <div class="type-label">H2 / Section Headings — Montserrat Bold</div>
+      <div class="type-specimen-h2">Where Great Design Clicks</div>
+      <div class="type-meta">
+        <span class="type-meta-item">Font: Montserrat</span>
+        <span class="type-meta-item">Weight: 700 Bold</span>
+        <span class="type-meta-item">Color: Royal Azure Blue</span>
+        <span class="type-meta-item">Use: Section titles, subheadings</span>
+      </div>
+    </div>
+
+    <div class="type-block reveal">
+      <div class="type-label">H3 / Sub-headings — Montserrat Bold</div>
+      <div class="type-specimen-h3">Digital Marketing · Web Design · Branding</div>
+      <div class="type-meta">
+        <span class="type-meta-item">Font: Montserrat</span>
+        <span class="type-meta-item">Weight: 700 Bold</span>
+        <span class="type-meta-item">Color: Royal Azure Blue</span>
+        <span class="type-meta-item">Use: Card titles, feature names</span>
+      </div>
+    </div>
+
+    <div class="type-block reveal">
+      <div class="type-label">Body Copy — Georgia Serif</div>
+      <div class="type-specimen-body">
+        We build brands that demand attention. Every pixel, every word, every interaction is crafted to position your business as the premium choice in your market.
+      </div>
+      <div class="type-meta">
+        <span class="type-meta-item">Font: Georgia</span>
+        <span class="type-meta-item">Weight: 400 Regular</span>
+        <span class="type-meta-item">Line-height: 1.75</span>
+        <span class="type-meta-item">Use: Paragraphs, descriptions, long-form text</span>
+      </div>
+    </div>
+
+    <div class="type-block reveal">
+      <div class="type-label">Labels / Captions — Montserrat Medium</div>
+      <div class="type-specimen-caption">Founder & Creative Director · Charleston, SC · smartedgedm.com</div>
+      <div class="type-meta">
+        <span class="type-meta-item">Font: Montserrat</span>
+        <span class="type-meta-item">Weight: 500 Medium</span>
+        <span class="type-meta-item">Tracking: 0.1em</span>
+        <span class="type-meta-item">Use: Labels, captions, metadata, nav items</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section id="logo">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <span class="section-title">Logo System</span>
+  </div>
+  <h2 class="section-headline reveal">The mark.<br>Every variation.</h2>
+  <p class="section-sub reveal">The Cyber Lime slash is the signature element. It must always appear between SMART and EDGE. Never alter its color.</p>
+
+  <div class="logo-grid">
+    <div class="logo-card reveal">
+      <div class="logo-display logo-display-dark">
+        SMART<span class="slash">/</span>EDGE
+      </div>
+      <div class="logo-card-meta">
+        <div class="logo-card-name">Primary — Dark Background</div>
+        <div class="logo-card-desc">Default usage. Cream wordmark, Lime slash, on Almost Black.</div>
+      </div>
+    </div>
+
+    <div class="logo-card reveal">
+      <div class="logo-display logo-display-cream" style="color:var(--black);">
+        SMART<span style="color:var(--lime)">/</span>EDGE
+      </div>
+      <div class="logo-card-meta">
+        <div class="logo-card-name">Reversed — Light Background</div>
+        <div class="logo-card-desc">Use on Creamy White surfaces. Black wordmark, Lime slash always retained.</div>
+      </div>
+    </div>
+
+    <div class="logo-card reveal">
+      <div class="logo-display logo-display-blue">
+        SMART<span class="slash">/</span>EDGE
+      </div>
+      <div class="logo-card-meta">
+        <div class="logo-card-name">Brand Color — Azure Blue</div>
+        <div class="logo-card-desc">Use sparingly on Royal Azure backgrounds. High impact moments only.</div>
+      </div>
+    </div>
+
+    <div class="logo-card reveal">
+      <div class="logo-display" style="background:var(--lime); color:var(--black);">
+        SMART<span style="color:var(--black)">/</span>EDGE
+      </div>
+      <div class="logo-card-meta">
+        <div class="logo-card-name">Inverted — Lime Background</div>
+        <div class="logo-card-desc">Maximum impact use only. CTAs, campaign headers, merch. Never for body content.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;" class="reveal">
+    <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(249,248,243,0.4);margin-bottom:1.25rem;">Logo Clear Space</h3>
+    <div style="display:inline-block;border:1px dashed rgba(204,255,0,0.3);padding:2rem;border-radius:4px;position:relative;">
+      <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.03em;">SMART<span style="color:var(--lime)">/</span>EDGE</div>
+      <div style="position:absolute;top:0.5rem;left:50%;transform:translateX(-50%);font-size:0.55rem;color:rgba(204,255,0,0.5);letter-spacing:0.1em;white-space:nowrap;">minimum clear space = cap height</div>
+    </div>
+    <p style="font-size:0.75rem;color:rgba(249,248,243,0.4);margin-top:1rem;font-family:Georgia,serif;">Always maintain clear space equal to the cap height of the wordmark on all sides. Never crowd the logo with other elements.</p>
+  </div>
+</section>
+
+<!-- BUSINESS CARD -->
+<section id="card">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <span class="section-title">Business Card</span>
+  </div>
+  <h2 class="section-headline reveal">The first impression.<br>Make it count.</h2>
+  <p class="section-sub reveal">3.5" × 2" · Soft touch matte finish · 16pt stock minimum · PDF/X-1a export · 0.125" bleed all sides</p>
+
+  <div class="card-showcase reveal">
+    <div class="bc-preview">
+      <div class="bc-front-preview" style="position:relative;height:100%;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--lime);"></div>
+        <div class="bc-wordmark">SMART<span class="slash">/</span>EDGE</div>
+        <div class="bc-tagline">Where Great Design Clicks ›</div>
+        <div style="position:absolute;bottom:1.25rem;right:1.5rem;font-size:0.55rem;font-weight:700;letter-spacing:0.08em;color:rgba(249,248,243,0.2);text-transform:uppercase;">Front</div>
+      </div>
+    </div>
+
+    <div class="bc-preview">
+      <div class="bc-back-preview" style="position:relative;height:100%;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--lime);"></div>
+        <div class="bc-name">Aimee Tyler</div>
+        <div class="bc-title">Founder & Creative Director</div>
+        <div class="bc-contact">
+          843.608.0221<br>
+          Aimee.Tyler@SmartEdgeDM.com<br>
+          smartedgedm.com
+        </div>
+        <div class="bc-services">
+          <span>Digital Marketing</span>
+          <span>Web Design</span>
+          <span>Branding</span>
+        </div>
+        <div style="position:absolute;bottom:1.25rem;left:1.5rem;width:50px;height:50px;background:var(--black);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <rect x="2" y="2" width="12" height="12" rx="2" fill="#F9F8F3"/>
+            <rect x="5" y="5" width="6" height="6" fill="#1A1A1B"/>
+            <rect x="22" y="2" width="12" height="12" rx="2" fill="#F9F8F3"/>
+            <rect x="25" y="5" width="6" height="6" fill="#1A1A1B"/>
+            <rect x="2" y="22" width="12" height="12" rx="2" fill="#F9F8F3"/>
+            <rect x="5" y="25" width="6" height="6" fill="#1A1A1B"/>
+            <rect x="22" y="22" width="4" height="4" fill="#F9F8F3"/>
+            <rect x="28" y="22" width="4" height="4" fill="#F9F8F3"/>
+            <rect x="22" y="28" width="4" height="4" fill="#F9F8F3"/>
+            <rect x="28" y="28" width="4" height="4" fill="#F9F8F3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;" class="reveal">
+    <span class="pill">Montserrat 900 — Name</span>
+    <span class="pill-blue">Montserrat 700 — Title</span>
+    <span class="pill-purple">Georgia — Contact Details</span>
+    <span class="pill-purple">Montserrat 500 — Services</span>
+    <span class="pill">Soft Touch Matte Finish</span>
+  </div>
+</section>
+
+<!-- VOICE & TONE -->
+<section id="voice">
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <span class="section-title">Voice & Tone</span>
+  </div>
+  <h2 class="section-headline reveal">How SmartEdge<br>speaks.</h2>
+  <p class="section-sub reveal">Confident without arrogance. Direct without being cold. Expert without being inaccessible.</p>
+
+  <div class="voice-grid reveal">
+    <div>
+      <div class="voice-col-title do">We say</div>
+      <div class="voice-item">
+        <div class="voice-dot do"></div>
+        <div class="voice-text">"We build brands that demand attention."</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot do"></div>
+        <div class="voice-text">"Your website should work as hard as you do."</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot do"></div>
+        <div class="voice-text">"Premium design. Real results."</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot do"></div>
+        <div class="voice-text">"Where great design clicks."</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot do"></div>
+        <div class="voice-text">Short sentences. Strong verbs. Clear value.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="voice-col-title dont">We never say</div>
+      <div class="voice-item">
+        <div class="voice-dot dont"></div>
+        <div class="voice-text">"We leverage synergistic solutions to optimize your digital footprint."</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot dont"></div>
+        <div class="voice-text">"We're passionate about helping businesses grow!!!"</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot dont"></div>
+        <div class="voice-text">"We offer affordable, budget-friendly options."</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot dont"></div>
+        <div class="voice-text">Jargon for its own sake. Filler words. Vague claims.</div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-dot dont"></div>
+        <div class="voice-text">Excessive exclamation points or emoji in professional copy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USAGE RULES -->
+<section id="usage">
+  <div class="section-header reveal">
+    <span class="section-num">06</span>
+    <span class="section-title">Usage Rules</span>
+  </div>
+  <h2 class="section-headline reveal">What to do.<br>What never to do.</h2>
+  <p class="section-sub reveal">These rules protect the brand. Bending them dilutes everything we've built.</p>
+
+  <div class="rules-grid">
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-do">✓</div>
+      <div class="rule-title">Always use the Lime slash</div>
+      <div class="rule-desc">The / between SMART and EDGE in Cyber Lime is non-negotiable. It's the signature mark of the brand.</div>
+    </div>
+
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-do">✓</div>
+      <div class="rule-title">Use Cyber Lime sparingly</div>
+      <div class="rule-desc">Its power comes from restraint. CTAs, accents, the slash. Overuse kills the impact immediately.</div>
+    </div>
+
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-do">✓</div>
+      <div class="rule-title">Maintain font hierarchy</div>
+      <div class="rule-desc">Montserrat for all headings, labels, and UI. Georgia for body copy only. Never reverse these roles.</div>
+    </div>
+
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-do">✓</div>
+      <div class="rule-title">Export print files as CMYK</div>
+      <div class="rule-desc">All print materials must be CMYK from the start. RGB files sent to print cause color shifts — especially Cyber Lime.</div>
+    </div>
+
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-dont">✗</div>
+      <div class="rule-title">Never stretch the logo</div>
+      <div class="rule-desc">Always scale proportionally. Hold Shift in Illustrator. A distorted logo looks amateur regardless of context.</div>
+    </div>
+
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-dont">✗</div>
+      <div class="rule-title">Never place logo on busy backgrounds</div>
+      <div class="rule-desc">The wordmark needs breathing room and contrast. No photos, no patterns, no colors that reduce legibility.</div>
+    </div>
+
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-dont">✗</div>
+      <div class="rule-title">Never change the slash color</div>
+      <div class="rule-desc">The slash is always Cyber Lime #CCFF00. Not white. Not blue. Not purple. Always Lime.</div>
+    </div>
+
+    <div class="rule-card reveal">
+      <div class="rule-icon rule-icon-dont">✗</div>
+      <div class="rule-title">Never use off-brand fonts</div>
+      <div class="rule-desc">No Arial, Helvetica, Times New Roman, or system fonts in branded materials. Montserrat and Georgia only.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="reveal">
+  <div class="footer-logo">SMART<span>/</span>EDGE</div>
+  <div class="footer-meta">
+    SmartEdge Marketing LLC · Charleston, SC<br>
+    Brand Style Guide v1.0 · 2025<br>
+    smartedgedm.com
+  </div>
+</footer>
+
+<script>
+  function copyColor(btn, hex) {
+    navigator.clipboard.writeText(hex).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy Hex';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
